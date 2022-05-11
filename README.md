@@ -9,6 +9,12 @@ git clone https://github/terroo/aptporn
 cd aptporn/
 sh aptporn --install
 ```
+# 国内加速
+```sh
+git clone  https://gh.gcdn.mirr.one/lost1984/aptporn.git
+cd aptporn/
+sh aptporn --install
+```
 
 Wait until the script ends. For more information run: `./aptporn --help`.
 
