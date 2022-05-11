@@ -5,6 +5,8 @@
 # author: Marcos Oliveira <https://terminalroot.com.br/shell>
 # version: 2.0
 # license: GNU GPLv3
+# 针对国内访问不了github 进行修改
+# 增加了部分自己常用的软件安装
 
 [[ $(echo $LANG | cut -c 1-2) == "pt" ]] && _MSG="Não use 'sudo' e nem 'root'" || _MSG="Do not use 'sudo' or 'root'"
 [[ $(id -u) -eq 0 ]] && echo ${_MSG} && exit 1
@@ -67,7 +69,7 @@ _build_polybar(){
 
 _git_svn_packs(){
   [[ ! -d "${HOME}/.local/share/fonts" ]] && mkdir -p "${HOME}/.local/share/fonts"
-  svn export https://github.com/terroo/fonts/trunk/fonts
+  svn export https://gh.gcdn.mirr.one/terroo/fonts.git
   mv fonts ${HOME}/.local/share/fonts/
   fc-cache -fv
 }
