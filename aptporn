@@ -7,6 +7,7 @@
 # license: GNU GPLv3
 # 针对国内访问不了github 进行修改
 # 增加了部分自己常用的软件安装
+#请不要用root账户进行安装
 
 [[ $(echo $LANG | cut -c 1-2) == "pt" ]] && _MSG="Não use 'sudo' e nem 'root'" || _MSG="Do not use 'sudo' or 'root'"
 [[ $(id -u) -eq 0 ]] && echo ${_MSG} && exit 1
@@ -45,27 +46,11 @@ _updates(){
   exit 0
 }
 
-_deps_build(){
-  sudo apt install -y build-essential \
-    cmake cmake-data pkg-config libcairo2-dev \
-    libxcb1-dev libxcb-util0-dev libxcb-randr0-dev \
-    libxcb-composite0-dev python3-xcbgen xcb-proto \
-    libxcb-image0-dev libxcb-ewmh-dev \
-    libxcb-icccm4-dev \
-    libcurl4-openssl-dev libjsoncpp-dev libpulse-dev libmpdclient-dev libasound2-dev libxcb-cursor-dev libxcb-xrm-dev libxcb-xkb-dev libnl-genl-3-dev
-  }
-
 _apt_packs(){
-  sudo apt install -y bspwm sxhkd subversion rofi feh numlockx compton dunst neofetch imagemagick webp unifont gnome-terminal git
+  sudo apt install -y bspwm sxhkd subversion rofi feh numlockx compton dunst neofetch imagemagick webp unifont gnome-terminal git polybar
 }
 
-_build_polybar(){
-  cd /tmp
-  git clone --recursive https://github.com/polybar/polybar
-  cd polybar/
-  sed -i 's/read /#read /g' build.sh
-  sudo ./build.sh
-}
+
 
 _git_svn_packs(){
   [[ ! -d "${HOME}/.local/share/fonts" ]] && mkdir -p "${HOME}/.local/share/fonts"
@@ -114,10 +99,7 @@ _ok(){
 _install(){
   _start
   _apt_packs
-  _deps_build
-  [[ ! $(which cmake 2>/dev/null) ]] && _deps_build
   _git_svn_packs
-  [[ $(grep -i 'debian' /etc/issue) ]] && sudo apt -y install polybar || _build_polybar
   _cfg_all
   _ok
   exit 0
