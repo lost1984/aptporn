@@ -19,3 +19,11 @@ cd aptporn/
 bash aptporn --uninstall
 ```
 
+
+
+Super + Alt + q - Closes the session
+Super + Esc - refreshes bspwm and Polybar
+Super + d - Opens the Rofi
+Super + enter - Opens the terminal
+Super + w - Close a window
+And among other commands that can be consulted in the video below
