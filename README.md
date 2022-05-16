@@ -14,7 +14,7 @@ bash aptporn --install
 
 # 卸载
 ```sh
-git clone https://github/terroo/aptporn
+git clone  https://gh.gcdn.mirr.one/lost1984/aptporn.git
 cd aptporn/
 bash aptporn --uninstall
 ```
